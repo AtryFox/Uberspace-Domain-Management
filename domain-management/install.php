@@ -40,7 +40,7 @@
 			mysql_query("CREATE TABLE users (id int(255) NOT NULL auto_increment,username varchar(256) NOT NULL,password varchar(128) NOT NULL, PRIMARY KEY (id) );");
 			mysql_query("CREATE TABLE domains (id int(255) NOT NULL auto_increment,domain varchar(256) NOT NULL, PRIMARY KEY (id) );");						
 		
-			mysql_query("INSERT INTO users (username, password) VALUES ('$username', '$password1');");
+			mysql_query("INSERT INTO users (username, password) VALUES ('".mysql_real_escape_string($username)."', '".mysql_real_escape_string($password1)."');");
 
 			/* CONFIG CREATION */ {
 $fp = fopen('config.php', 'w'); 
