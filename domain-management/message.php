@@ -15,7 +15,7 @@ if(isset($msg)) {
 		<div class="panel panel-success">
 			<div class="panel-heading">Installation abgeschlossen!</div>
 			<div class="panel-body">
-			Du kannst nun Domains anlegen und sie verwalten. Bitte beachte, dass du vor der Nutzung alte symbolische Links im Verzeichnis <i>'.$dir.'</i> entfernen solltest bzw. diese manuell in die Datenbank eintragen solltest.
+			Du kannst dich nun einloggen und Domains anlegen und verwalten. Bitte beachte, dass du vor der Nutzung alte symbolische Links im Verzeichnis <i>'.$dir.'</i> entfernen solltest bzw. diese manuell in die Datenbank eintragen solltest.
 			</div>
 		</div>'; break;
 
