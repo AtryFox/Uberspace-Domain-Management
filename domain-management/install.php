@@ -51,6 +51,7 @@ fputs($fp, '<?php
 
 // general //
 $uberspacename = "'.$ubr.'";
+$version = "2";
 
 // mysql // 
 $username = "'.$mysql_user.'";
