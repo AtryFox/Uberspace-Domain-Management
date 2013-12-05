@@ -1,8 +1,12 @@
 <?php
 	if(!file_exists("config.php")) {
 		header("Location: install.php");
+	}
+
+	if(file_exists("config.php") && file_exists("install.php")) {
+		unlink("install.php");
 	}	
-	
+
 	if(isset($_COOKIE["msg"])) {
 		$msg = $_COOKIE["msg"];
 		setcookie("msg", "", 0, "/");
