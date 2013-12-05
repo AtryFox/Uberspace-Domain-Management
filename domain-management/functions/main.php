@@ -13,8 +13,20 @@
 		} else return FALSE;
 	}
 	
+	//Deprecated
 	function makeHash($hashThis) {
-		for($i = 0; $i < 42; $i++) $hashThis = hash("sha512", $hashThis);
+		for($i = 0; $i < 256; $i++) $hashThis = hash("sha512", $hashThis);
+		return $hashThis;
+	}
+	
+	function makeHashSecure($hashThis, &$salt) {
+		$salt = md5(rand() + time() + "herpderp_ICH GEB HIER MEINEN *PEEP* DAZU");
+		for($i = 0; $i < 256; $i++) $hashThis = hash("sha512", $hashThis.$salt);
+		return $hashThis;
+	}
+	
+	function makeSaltedHash($hashThis, $salt) {
+		for($i = 0; $i < 256; $i++) $hashThis = hash("sha512", $hashThis.$salt);
 		return $hashThis;
 	}
 	

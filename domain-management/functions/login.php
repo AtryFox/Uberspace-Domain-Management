@@ -5,7 +5,15 @@
 	
 	
 	$username = strtolower($_POST["username"]); 
-	$password = makeHash($_POST["password"]); 
+	$salt = "";
+	$q = mysql_query("SELECT salt FROM users WHERE username = '".mysql_real_escape_string($username)."'");
+	echo mysql_error();
+	while($r = mysql_fetch_array($q))
+	{
+		$salt = $r["salt"];
+		echo $salt;
+	}
+	$password = makeSaltedHash($_POST["password"], $salt); 
 		
 		$q = mysql_query("SELECT password FROM users WHERE username = '".mysql_real_escape_string($username)."' AND password = '".mysql_real_escape_string($password)."'");
 		 while($r = mysql_fetch_array($q)) {

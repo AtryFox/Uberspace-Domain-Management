@@ -21,6 +21,8 @@
 			$username = strtolower($_POST["username"]);
 			$password1 = makeHash($_POST["password1"]);
 			$password2 = makeHash($_POST["password2"]);
+			$salt = "";
+			$passwordSecure = makeHashSecure($_POST["password1"], $salt);
 
 			$mysql_host = $_POST["mysql_host"];
 			$mysql_user = $_POST["mysql_user"];
@@ -37,10 +39,10 @@
 			$verbindung = mysql_connect ($mysql_host, $mysql_user, $mysql_pass) or die ('<div class="text-center alert alert-danger">Keine Verbindung zum MySQL Server möglich! Starte die Installation neu und stelle sicher, dass die MySQL Logindaten korrekt sind.</div>');
 			mysql_select_db($mysql_data) or die ('<div class="text-center alert alert-danger">Keine Verbindung zur Datenbank möglich! Starte die Installation neu und stelle sicher, dass die Datenbank existiert.</div>');
 						
-			mysql_query("CREATE TABLE users (id int(255) NOT NULL auto_increment,username varchar(256) NOT NULL,password varchar(128) NOT NULL, PRIMARY KEY (id) );");
+			mysql_query("CREATE TABLE users (id int(255) NOT NULL auto_increment,username varchar(256) NOT NULL,password varchar(128) NOT NULL,salt varchar(128) NOT NULL, PRIMARY KEY (id) );");
 			mysql_query("CREATE TABLE domains (id int(255) NOT NULL auto_increment,domain varchar(256) NOT NULL, PRIMARY KEY (id) );");						
 		
-			mysql_query("INSERT INTO users (username, password) VALUES ('$username', '$password1');");
+			mysql_query("INSERT INTO users (username, password, salt) VALUES ('".mysql_real_escape_string($username)."', '".mysql_real_escape_string($passwordSecure)."', '".mysql_real_escape_string($salt)."');");
 
 			/* CONFIG CREATION */ {
 $fp = fopen('config.php', 'w'); 
