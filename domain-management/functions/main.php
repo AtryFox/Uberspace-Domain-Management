@@ -25,11 +25,11 @@
 		} return FALSE;
 	}
 	
-	function checkLink($link) {
+	function checkLink($link, $id) {
 		if(is_link($link)) {
 			return "<span style='color: green;'>Verfügbar</span>";
 		} else {
-			return "<span style='color: red;'>Fehler</span>";
+			return "<span><a href='?p=edit-domain&id=".$id."'>Fehler</span>";
 		}
 	}
 ?>

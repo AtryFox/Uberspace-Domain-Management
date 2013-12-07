@@ -15,7 +15,8 @@
 	
 	while ($r = mysql_fetch_array($q)) {
 		$domain = $r["domain"];
-		$path = substr(str_replace($dir, "", readlink($dir.$domain)), 0, -1);
+		$path = "";
+		if(is_link($dir.$domain)) $path = substr(str_replace($dir, "", readlink($dir.$domain)), 0, -1);
 	}
 	
 	if($domain == "") {
@@ -25,14 +26,13 @@
 	}
 ?>
 <div class="col-md-7">
-	<form method="post" action="?p=add-domain-func">
+	<form method="post" action="?p=edit-domain-func">
 		<h3>Domain bearbeiten<input style="margin-left: 20px;" type="submit" class="btn btn-success" value="Senden"></h3>
-
-
+		<input type="hidden" name="id" value="<?php echo $id; ?>">
 		<div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon">www.</span>
-				<input type="text" class="form-control" name="domain" required value="<?php echo $domain; ?>" disabled="true">
+				<input type="text" class="form-control" required value="<?php echo $domain; ?>" disabled="true">
 			</div>
 			<br>
 			<div class="input-group">
