@@ -15,7 +15,8 @@
 	
 	while ($r = mysql_fetch_array($q)) {
 		$domain = $r["domain"];
-		$path = substr(str_replace($dir, "", readlink($dir.$domain)), 0, -1);
+		$path = "";
+		if(is_link($dir.$domain)) $path = substr(str_replace($dir, "", readlink($dir.$domain)), 0, -1);
 	}
 	
 	if($domain == "") {
