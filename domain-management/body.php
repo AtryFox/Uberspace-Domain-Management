@@ -1,7 +1,8 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Navigation umschalten</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+			
+			<?php if(getLoggedin()) echo '<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Navigation umschalten</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>'; ?>
 			<a class="navbar-brand hidden-xs" href="index.php">Uberspace Domain Management</a>
 			<a class="navbar-brand visible-xs" style="font-size: 15px;" href="index.php">Uberspace Domain Management</a>
 		</div>

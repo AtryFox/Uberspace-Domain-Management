@@ -1,6 +1,12 @@
 <?php
 	//exit;
 	error_reporting(0);
+	
+	if(file_exists("config.php")) {
+		unlink("install.php");
+		header("Location: index.php");
+	}	
+
 	if(isset($_COOKIE["msg"])) {
 		$msg = $_COOKIE["msg"];
 		setcookie("msg", "", 0, "/");
