@@ -3,7 +3,7 @@
 		exit;
 	}
 	
-	if($_GET["id"] == "") {
+	if(!isset($_GET["id"])) {
 		$msg = "E02";
 		include("message.php");
 		exit;
