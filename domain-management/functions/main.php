@@ -24,4 +24,12 @@
 			return TRUE;
 		} return FALSE;
 	}
+	
+	function checkLink($link) {
+		if(is_link($link)) {
+			return "<span style='color: green;'>Verfügbar</span>";
+		} else {
+			return "<span style='color: red;'>Fehler</span>";
+		}
+	}
 ?>
