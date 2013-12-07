@@ -31,8 +31,10 @@
 				case "home": include("pages/domains.php"); break;
 				case "logout": include("functions/logout.php"); break;
 				case "add-domain": include("pages/add-domain.php"); break;
+				case "edit-domain": include("pages/edit-domain.php"); break;
 				case "add-domain-func": include("functions/add-domain.php"); break;
 				case "del-domain-func": include("functions/del-domain.php"); break;
+				case "edit-domain-func": include("functions/edit-domain.php"); break;
 			}
 		}
 	?>
