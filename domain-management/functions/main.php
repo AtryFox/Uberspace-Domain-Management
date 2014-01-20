@@ -1,4 +1,6 @@
 <?php
+	error_reporting(0);
+
 	function getLoggedin() {
 		if(isset($_COOKIE["name"])) {
 			if (isset($_COOKIE["key"])) {
