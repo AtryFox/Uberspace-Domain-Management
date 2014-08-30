@@ -11,9 +11,9 @@ if (!isset($_GET["id"])) {
 
 $id = $_GET["id"];
 
-$q = mysql_query("SELECT * FROM " . $t_domains . " WHERE id =" . $id . ";");
+$q = $mysqli->query("SELECT * FROM " . $t_domains . " WHERE id =" . $id . ";");
 
-while ($r = mysql_fetch_array($q)) {
+while ($r = mysqli_fetch_array($q)) {
 	$domain = $r["domain"];
 	$path = "";
 	if (is_link($dir . $domain)) $path = substr(str_replace($dir, "", readlink($dir . $domain)), 0, -1);

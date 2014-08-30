@@ -56,9 +56,6 @@ include("functions/main.php");
 
             $mysqli->query("INSERT INTO " . $mysql_pref . "users (username, password) VALUES ('" . $mysqli->real_escape_string($username) . "', '" . $mysqli->real_escape_string($password1) . "');");
 
-            echo $mysqli->real_escape_string($username) . "<br>";
-            echo $mysqli->real_escape_string($password1) . "<br>";
-            echo "Table creation failed: (" . $mysqli->errno . ") " . $mysqli->error;
             /* CONFIG CREATION */
             {
                 $fp = fopen('config.php', 'w');

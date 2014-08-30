@@ -28,7 +28,7 @@
 		exit;
 	}
 
-	mysql_query("INSERT INTO " . $t_domains . " (domain) VALUES ('".mysql_real_escape_string($domain)."');");
+	$mysqli->query("INSERT INTO " . $t_domains . " (domain) VALUES ('".$mysqli->real_escape_string($domain)."');");
 
 	symlink($path , $dir.$domain);
 	symlink($path , $dir."www.".$domain);

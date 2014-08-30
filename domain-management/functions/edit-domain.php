@@ -7,9 +7,9 @@
 
 	$id = $_POST["id"];
 	
-	$q = mysql_query("SELECT * FROM " . $t_domains . " WHERE id =".$id.";");
+	$q = $mysqli->query("SELECT * FROM " . $t_domains . " WHERE id =".$id.";");
 	
-	while ($r = mysql_fetch_array($q)) {
+	while ($r = mysqli_fetch_array($q)) {
 		$domain = $r["domain"];
 	}
 	
