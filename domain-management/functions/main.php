@@ -7,8 +7,9 @@ function getLoggedin()
 		if (isset($_COOKIE["key"])) {
 			$username = $_COOKIE["name"];
 			$password = $_COOKIE["key"];
+            global $t_users;
 
-			$q = mysql_query("SELECT password FROM users WHERE username = '" . mysql_real_escape_string($username) . "' AND password = '" . mysql_real_escape_string($password) . "'");
+			$q = mysql_query("SELECT password FROM " . $t_users . " WHERE username = '" . mysql_real_escape_string($username) . "' AND password = '" . mysql_real_escape_string($password) . "'");
 			while ($r = mysql_fetch_array($q)) {
 				return TRUE;
 			}
@@ -25,7 +26,8 @@ function makeHash($hashThis)
 
 function checkDomain($domain)
 {
-	$q = mysql_query("SELECT domain FROM domains WHERE domain = '" . mysql_real_escape_string($domain) . "'");
+    global $t_domains;
+	$q = mysql_query("SELECT domain FROM " . $t_domains . " WHERE domain = '" . mysql_real_escape_string($domain) . "'");
 	while ($r = mysql_fetch_array($q)) {
 		return TRUE;
 	}

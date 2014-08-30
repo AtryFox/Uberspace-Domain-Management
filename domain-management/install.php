@@ -51,13 +51,13 @@ include("functions/main.php");
         }
 
         if ($connected) {
-            $mysqli->query("CREATE TABLE users (id int(255) NOT NULL auto_increment,username varchar(256) NOT NULL,password varchar(128) NOT NULL, PRIMARY KEY (id) );");
-            $mysqli->query("CREATE TABLE domains (id int(255) NOT NULL auto_increment,domain varchar(256) NOT NULL, PRIMARY KEY (id) );");
+            $mysqli->query("CREATE TABLE " . $mysql_pref . "users (id int(255) NOT NULL auto_increment,username varchar(256) NOT NULL,password varchar(128) NOT NULL, PRIMARY KEY (id) );");
+            $mysqli->query("CREATE TABLE " . $mysql_pref . "domains (id int(255) NOT NULL auto_increment,domain varchar(256) NOT NULL, PRIMARY KEY (id) );");
 
-            $mysqli->query("INSERT INTO users (username, password) VALUES ('" . $mysqli->real_escape_string($username) . "', '" . $mysqli->real_escape_string($password1) . "');");
+            $mysqli->query("INSERT INTO " . $mysql_pref . "users (username, password) VALUES ('" . $mysqli->real_escape_string($username) . "', '" . $mysqli->real_escape_string($password1) . "');");
 
-            echo $mysqli->real_escape_string($username) ."<br>";
-            echo $mysqli->real_escape_string($password1)."<br>";
+            echo $mysqli->real_escape_string($username) . "<br>";
+            echo $mysqli->real_escape_string($password1) . "<br>";
             echo "Table creation failed: (" . $mysqli->errno . ") " . $mysqli->error;
             /* CONFIG CREATION */
             {

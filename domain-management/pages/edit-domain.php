@@ -11,7 +11,7 @@ if (!isset($_GET["id"])) {
 
 $id = $_GET["id"];
 
-$q = mysql_query("SELECT * FROM domains WHERE id =" . $id . ";");
+$q = mysql_query("SELECT * FROM " . $t_domains . " WHERE id =" . $id . ";");
 
 while ($r = mysql_fetch_array($q)) {
 	$domain = $r["domain"];

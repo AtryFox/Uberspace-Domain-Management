@@ -1,4 +1,6 @@
 <?php
+$version = "1.3.0dev";
+
 if (!file_exists("config.php")) {
 	header("Location: install.php");
 }
@@ -21,12 +23,13 @@ if (isset($_GET["p"])) {
 $xButton = ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
 
 require_once("config.php");
-require_once("functions/main.php");
-require_once("functions/mysql.php");
-
 if (!isset($tablepre)) {
     $tablepre = "";
 }
+$t_users = $tablepre."users";
+$t_domains = $tablepre."domains";
+require_once("functions/main.php");
+require_once("functions/mysql.php");
 
 $dir = "/var/www/virtual/" . $uberspacename . "/";
 ?>

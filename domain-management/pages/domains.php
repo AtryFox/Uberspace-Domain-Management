@@ -12,10 +12,10 @@
 
 	switch ($o) {
 		case "id":
-			$q = mysql_query("SELECT * FROM domains ORDER BY id");
+			$q = mysql_query("SELECT * FROM " . $t_domains . " ORDER BY id");
 			break;
 		default:
-			$q = mysql_query("SELECT * FROM domains ORDER BY domain");
+			$q = mysql_query("SELECT * FROM " . $t_domains . " ORDER BY domain");
 	}
 
 	while ($r = mysql_fetch_array($q)) {

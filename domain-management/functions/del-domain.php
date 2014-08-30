@@ -5,7 +5,7 @@ if(!isset($_GET["id"])) {
 	exit;
 }
 
-	$q = mysql_query("SELECT * FROM domains WHERE id = '".$_GET["id"]."';");
+	$q = mysql_query("SELECT * FROM " . $t_domains . " WHERE id = '".$_GET["id"]."';");
 	while ($r = mysql_fetch_array($q)) {
 		if(is_link($dir.$r["domain"])) {
 			unlink($dir.$r["domain"]);
@@ -14,7 +14,7 @@ if(!isset($_GET["id"])) {
 			unlink($dir."www.".$r["domain"]);
 		}
 		
-		mysql_query("DELETE FROM domains WHERE id = '".$r["id"]."';");
+		mysql_query("DELETE FROM " . $t_domains . " WHERE id = '".$r["id"]."';");
 	}
 
 	setcookie("msg", "E07", time()+60, "/");
