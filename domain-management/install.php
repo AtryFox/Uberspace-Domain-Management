@@ -40,13 +40,15 @@
 				header("Location: install.php");
 			}
 
-			$verbindung = mysql_connect ($mysql_host, $mysql_user, $mysql_pass) or die ('<div class="text-center alert alert-danger">Keine Verbindung zum MySQL Server möglich! Starte die Installation neu und stelle sicher, dass die MySQL Logindaten korrekt sind.</div>');
-			mysql_select_db($mysql_data) or die ('<div class="text-center alert alert-danger">Keine Verbindung zur Datenbank möglich! Starte die Installation neu und stelle sicher, dass die Datenbank existiert.</div>');
-						
-			mysql_query("CREATE TABLE users (id int(255) NOT NULL auto_increment,username varchar(256) NOT NULL,password varchar(128) NOT NULL, PRIMARY KEY (id) );");
-			mysql_query("CREATE TABLE domains (id int(255) NOT NULL auto_increment,domain varchar(256) NOT NULL, PRIMARY KEY (id) );");						
-		
-			mysql_query("INSERT INTO users (username, password) VALUES ('".mysql_real_escape_string($username)."', '".mysql_real_escape_string($password1)."');");
+            $mysqli = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_data);
+            if ($mysqli->connect_errno) {
+                echo "<div class="text-center alert alert-danger">Keine Verbindung zum MySQL Server möglich! (" . $mysqli->connect_errno . ") " . $mysqli->connect_error . "</div>";
+            }
+
+			$mysqli->query("CREATE TABLE users (id int(255) NOT NULL auto_increment,username varchar(256) NOT NULL,password varchar(128) NOT NULL, PRIMARY KEY (id) );");
+            $mysqli->query("CREATE TABLE domains (id int(255) NOT NULL auto_increment,domain varchar(256) NOT NULL, PRIMARY KEY (id) );");
+
+            $mysqli->query("INSERT INTO users (username, password) VALUES ('".mysql_real_escape_string($username)."', '".mysql_real_escape_string($password1)."');");
 
 			/* CONFIG CREATION */ {
 $fp = fopen('config.php', 'w'); 
@@ -72,7 +74,7 @@ fclose($fp);
 			header("Location: index.php");
 		}
 
-		$ubr = split("/", str_replace("/var/www/virtual/", "", realpath("install.php")))[0];
+		$ubr = explode("/", str_replace("/var/www/virtual/", "", realpath("install.php")))[0];
 	?>
 	<div class="text-center alert alert-info">Die Installation ist einfach. Trage unten deinen Uberspace Nutzernamen, deine MySQL Logindaten sowie belibiege Logindaten, die du später zum einloggen in das Domain Management brauchst, ein und drücke auf <i>Installation starten</i>.</div>
 	<hr>
