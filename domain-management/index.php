@@ -24,6 +24,10 @@ require_once("config.php");
 require_once("functions/main.php");
 require_once("functions/mysql.php");
 
+if (!isset($tablepre)) {
+    $tablepre = "";
+}
+
 $dir = "/var/www/virtual/" . $uberspacename . "/";
 ?>
 
