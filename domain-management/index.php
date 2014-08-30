@@ -1,5 +1,5 @@
 <?php
-$version = "1.3.0";
+$version = "1.3.1";
 
 if (!file_exists("config.php")) {
 	header("Location: install.php");

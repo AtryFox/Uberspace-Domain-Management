@@ -12,6 +12,7 @@
 
 				if (getLoggedin()) {
 					echo '<li><a href="?p=add-domain">Domain hinzufügen</a></li>';
+                    echo '<li><a href="https://deratrox.de/dev/Uberspace_Domain_Management/index.php?v='. $version .'" target="_blank">Updates suchen</a></li>';
 					echo '<li><a href="?p=logout">Logout</a></li>';
 				}
 				?>
