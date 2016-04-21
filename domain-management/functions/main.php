@@ -59,5 +59,3 @@ function getLink($path1, $path2) {
 		return "<span style='color: red;'>Der Link konnte nicht zurückverfolgt werden.</span>";
 	}
 }
-
-?>

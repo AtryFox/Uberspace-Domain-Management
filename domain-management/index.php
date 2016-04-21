@@ -26,6 +26,7 @@ require_once("config.php");
 if (!isset($tablepre)) {
     $tablepre = "";
 }
+
 $t_users = $tablepre."users";
 $t_domains = $tablepre."domains";
 require_once("functions/main.php");

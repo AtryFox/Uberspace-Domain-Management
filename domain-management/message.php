@@ -11,7 +11,7 @@ if(isset($msg)) {
 		case "E07": echo '<div class="alert alert-success">'.$xButton.'<i class="glyphicon glyphicon-ok"></i> <b>Domain entfernt!</b> Sybolische Links wurden gelöscht.</div>'; break;
 		case "E08": echo '<div class="alert alert-success">'.$xButton.'<i class="glyphicon glyphicon-user"></i> <b>Logout erfolgreich!</b></div>'; break;
 		case "E09": echo '<div class="alert alert-success">'.$xButton.'<i class="glyphicon glyphicon-ok"></i> <b>Domain bearbeitet!</b> Sybolische Links wurden neu erstellt.</div>'; break;
-		
+
 		case "I00": echo '
 		<div class="panel panel-success">
 			<div class="panel-heading">Installation abgeschlossen!</div>
@@ -21,6 +21,8 @@ if(isset($msg)) {
 		</div>'; break;
 
 		case "I01": echo '<div class="alert alert-danger"><i class="glyphicon glyphicon-user"></i> <b>Installation abgebrochen!</b> Die Passwörter stimmen nicht überein.</div>'; break;
+		case "I02": echo '<div class="alert alert-danger"><i class="glyphicon glyphicon-user"></i> <b>Installation abgebrochen!</b> Tabellenpräfix ungültig. (Erlaubte Zeichen: <b>a-z</b>, <b>A-Z</b>, <b>0-9</b>, <b>_</b>)</div>'; break;
+		case "I03": echo '<div class="alert alert-danger"><i class="glyphicon glyphicon-user"></i> <b>Installation abgebrochen!</b> Tabellenpräfix ungültig. Bitte überprüfe deine Konfigurationsdatei und passe diese ggf. an. (Erlaubte Zeichen: <b>a-z</b>, <b>A-Z</b>, <b>0-9</b>, <b>_</b>)</div>'; break;
 
 		default: echo '<div class="alert alert-info">'.$xButton.'<b>Ooops...</b> Diese Nachricht sollte hier eigentlich nicht stehen.</div>';
 	}

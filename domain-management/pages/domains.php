@@ -1,3 +1,20 @@
+<?php
+$order = "";
+if (isset($_GET["order"])) $order = strtolower($_GET["order"]);
+
+switch ($o) {
+	case "id":
+		$order = "id";
+		break;
+	default:
+		$order = "domain";
+		break;
+}
+
+$s = $pdo->prepare("SELECT * FROM $t_domains ORDER BY $order");
+$s->execute();
+?>
+
 <h3>Hallo <?php echo $_COOKIE["name"]; ?>!</h3>
 <table class="table table-striped">
 	<tr>
@@ -7,18 +24,9 @@
 		<th style="text-align: center;">Optionen</th>
 	</tr>
 	<?php
-	$o = "";
-	if (isset($_GET["order"])) $o = strtolower($_GET["order"]);
 
-	switch ($o) {
-		case "id":
-			$q = $mysqli->query("SELECT * FROM " . $t_domains . " ORDER BY id");
-			break;
-		default:
-			$q = $mysqli->query("SELECT * FROM " . $t_domains . " ORDER BY domain");
-	}
 
-	while ($r = mysqli_fetch_array($q)) {
+	while ($r = $s->fetch()) {
 		$path1 = $dir . $r["domain"];
 		$path2 = $dir . "www." . $r["domain"];
 		$id = $r["id"];

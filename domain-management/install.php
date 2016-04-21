@@ -43,6 +43,11 @@ include("functions/main.php");
 			header("Location: install.php");
 		}
 
+		if (!preg_match("#^[a-zA-Z0-9_]*$#", $mysql_pref)) {
+			setcookie("msg", "I02", time() + 60, "/");
+			header("Location: install.php");
+		} 
+
 		$connected = true;
 
 		try {
