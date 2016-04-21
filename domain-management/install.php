@@ -1,6 +1,6 @@
 <?php
 //exit;
-error_reporting(E_ALL);
+error_reporting(0);
 
 if (file_exists("config.php")) {
 	unlink("install.php");
