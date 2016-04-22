@@ -15,8 +15,8 @@ Mit dem *Uberspace Domain Management*, kurz **UDM**, lassen sich auf einen [Uber
 - [x] Aufgeschaltete Domains bestimmten Ordnern via symbolischen Links zuweisen
 - [ ] Komplette Domainverwaltung (Webserver/Mailserver Konfiguration)
 - [ ] Zertifikate hinzufügen und verwalten
-- [ ] Datenbankanbindung mit Prepared Statements (**WIP**)
-- [ ] Automatische Updates
+- [x] Datenbankanbindung mit Prepared Statements
+- [ ] Automatische Updates (**WIP**)
 - [ ] Passwort Salting
 
 ## Informationen ##
