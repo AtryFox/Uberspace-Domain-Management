@@ -23,7 +23,6 @@ if (isset($_GET["p"])) {
 $xButton = ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
 
 require_once("config.php");
-
 require_once("functions/main.php");
 require_once("functions/mysql.php");
 

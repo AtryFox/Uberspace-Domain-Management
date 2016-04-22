@@ -28,7 +28,7 @@
 	include("message.php");
 
 	if (!$tablepreValid) {
-		echo '<script>$( ".error" ).append( "<div class=\"alert alert-danger\"><i class=\"glyphicon glyphicon-ban-circle\"></i> <b>Datenbankfehler!</b> Tabellenpräfix ungültig. Bitte überprüfe deine Konfigurationsdatei und passe diese ggf. an. (Erlaubte Zeichen: <b>a-z</b>, <b>A-Z</b>, <b>0-9</b>, <b>_</b>)</div>" )</script>';
+		echo '<script>$( ".error" ).append( "<div class=\"alert alert-danger\"><i class=\"fa fa-ban\"></i> <b>Datenbankfehler!</b> Tabellenpräfix ungültig. Bitte überprüfe deine Konfigurationsdatei und passe diese ggf. an. (Erlaubte Zeichen: <b>a-z</b>, <b>A-Z</b>, <b>0-9</b>, <b>_</b>)</div>" )</script>';
 		$tablepre = "!";
 	} else {
 

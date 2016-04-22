@@ -7,11 +7,19 @@ function getLoggedin()
 		if (isset($_COOKIE["key"])) {
 			$username = $_COOKIE["name"];
 			$password = $_COOKIE["key"];
-			global $t_users, $pdo;
+			global $t_users, $pdo, $tablepreValid;
+
+			if(!isset($pdo)) {
+				return false;
+			}
+
+			if(!$tablepreValid) {
+				return false;
+			}
 
 			$s = $pdo->prepare("SELECT password FROM $t_users WHERE username = :username AND password = :password LIMIT 1");
 			$s->execute(array('username' => $username, 'password' => $password));
-
+			
 			while ($r = $s->fetch()) {
 				return TRUE;
 			}

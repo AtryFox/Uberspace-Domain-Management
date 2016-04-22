@@ -17,18 +17,19 @@ switch ($o) {
 
 $s = $pdo->prepare("SELECT * FROM $t_domains ORDER BY $order");
 $s->execute();
-?>
 
-<h3>Hallo <?php echo $_COOKIE["name"]; ?>!</h3>
-<table class="table table-striped">
-	<tr>
-		<th style="text-align: center;"><a href="?order=id">ID</a></th>
-		<th><a href="?order=domain">Domain</a></th>
-		<th>Verzeichnis</th>
-		<th style="text-align: center;">Optionen</th>
-	</tr>
-	<?php
+echo "<h3>Hallo " . $_COOKIE["name"] . "!</h3>";
 
+if ($s->rowCount() == 0) {
+	echo "<p>Keine Domains vorhanden. Beginne mit dem <a href='?p=add-domain'>hinzufügen</a> einer Domain!</p>";
+} else {
+	echo "<table class='table table-striped'>";
+	echo "<tr>";
+	echo "<th style='text-align: center;'><a href='?order=id'>ID</a></th>";
+	echo "<th><a href='?order=domain'>Domain</a></th>";
+	echo "<th>Verzeichnis</th>";
+	echo "<th style='text-align: center;'>Optionen</th>";
+	echo "</tr>";
 
 	while ($r = $s->fetch()) {
 		$path1 = $dir . $r["domain"];
@@ -47,5 +48,6 @@ $s->execute();
 				  </div></td>";
 		echo "</tr>";
 	}
-	?>
+}
+?>
 </table>
