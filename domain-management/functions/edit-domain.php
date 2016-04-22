@@ -11,9 +11,10 @@ if (!isset($_POST["id"]) || !isset($_POST["path"])) {
 
 $id = $_POST["id"];
 
-$q = $mysqli->query("SELECT * FROM " . $t_domains . " WHERE id =" . $id . ";");
+$s = $pdo->prepare("SELECT * FROM $t_domains WHERE id = :id LIMIT 1");
+$s->execute(array('id' => $id));
 
-while ($r = mysqli_fetch_array($q)) {
+while ($r = $s->fetch()) {
 	$domain = $r["domain"];
 }
 

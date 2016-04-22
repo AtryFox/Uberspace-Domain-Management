@@ -7,10 +7,12 @@ function getLoggedin()
 		if (isset($_COOKIE["key"])) {
 			$username = $_COOKIE["name"];
 			$password = $_COOKIE["key"];
-			global $t_users, $mysqli;
+			global $t_users, $pdo;
 
-			$q = $mysqli->query("SELECT password FROM " . $t_users . " WHERE username = '" . $mysqli->real_escape_string($username) . "' AND password = '" . $mysqli->real_escape_string($password) . "'");
-			while ($r = mysqli_fetch_array($q)) {
+			$s = $pdo->prepare("SELECT password FROM $t_users WHERE username = :username AND password = :password LIMIT 1");
+			$s->execute(array('username' => $username, 'password' => $password));
+
+			while ($r = $s->fetch()) {
 				return TRUE;
 			}
 			return FALSE;
@@ -34,9 +36,10 @@ function makeHash($hashThis)
 
 function checkDomain($domain)
 {
-	global $t_domains, $mysqli;
-	$q = $mysqli->query("SELECT domain FROM " . $t_domains . " WHERE domain = '" . mysql_real_escape_string($domain) . "'");
-	while ($r = mysqli_fetch_array($q)) {
+	global $t_domains, $pdo;
+	$s = $pdo->prepare("SELECT domain FROM $t_domains WHERE domain = :domain");
+	$s->execute(array('domain' => $domain));
+	while ($r = $s->fetch()) {
 		return TRUE;
 	}
 	return FALSE;

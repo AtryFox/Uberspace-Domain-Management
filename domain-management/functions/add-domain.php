@@ -3,7 +3,6 @@ require_once(dirname(__FILE__) . "/../functions/main.php");
 
 loginCheck();
 
-
 if (!isset($_POST["domain"]) || !isset($_POST["path"])) {
 	$msg = "E02";
 	include("message.php");
@@ -19,8 +18,6 @@ if (!file_exists($path)) {
 	exit;
 }
 
-echo $path;
-
 if (checkDomain($domain)) {
 	setcookie("msg", "E04", time() + 60, "/");
 	header("Location: ?p=add-domain");
@@ -33,7 +30,8 @@ if (is_link($dir . $domain) || is_link($dir . "www." . $domain)) {
 	exit;
 }
 
-$mysqli->query("INSERT INTO " . $t_domains . " (domain) VALUES ('" . $mysqli->real_escape_string($domain) . "');");
+$s = $pdo->prepare("INSERT INTO $t_domains (domain) VALUES (:domain)");
+$s->execute(array('domain' => $domain));
 
 symlink($path, $dir . $domain);
 symlink($path, $dir . "www." . $domain);

@@ -11,9 +11,10 @@ if (!isset($_GET["id"])) {
 
 $id = $_GET["id"];
 
-$q = $mysqli->query("SELECT * FROM " . $t_domains . " WHERE id =" . $id . ";");
+$s = $pdo->prepare("SELECT * FROM $t_domains WHERE id = :id LIMIT 1");
+$s->execute(array('id' => $id));
 
-while ($r = mysqli_fetch_array($q)) {
+while ($r = $s->fetch()) {
 	$domain = $r["domain"];
 	$path = "";
 	if (is_link($dir . $domain)) $path = substr(str_replace($dir, "", readlink($dir . $domain)), 0, -1);

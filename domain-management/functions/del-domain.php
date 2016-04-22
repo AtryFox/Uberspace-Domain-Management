@@ -9,8 +9,10 @@ if (!isset($_GET["id"])) {
 	exit;
 }
 
-$q = $mysqli->query("SELECT * FROM " . $t_domains . " WHERE id = '" . $_GET["id"] . "';");
-while ($r = mysqli_fetch_array($q)) {
+$s = $pdo->prepare("SELECT * FROM $t_domains WHERE id = :id");
+$s->execute(array('id' => $_GET["id"]));
+
+while ($r = $s->fetch()) {
 	if (is_link($dir . $r["domain"])) {
 		unlink($dir . $r["domain"]);
 	}
@@ -18,7 +20,8 @@ while ($r = mysqli_fetch_array($q)) {
 		unlink($dir . "www." . $r["domain"]);
 	}
 
-	$mysqli->query("DELETE FROM " . $t_domains . " WHERE id = '" . $r["id"] . "';");
+	$s_delete = $pdo->prepare("DELETE FROM $t_domains WHERE id = :id");
+	$s_delete->execute(array('id' => $r["id"]));
 }
 
 setcookie("msg", "E07", time() + 60, "/");
