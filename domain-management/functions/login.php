@@ -1,10 +1,5 @@
 <?php
 include("../config.php");
-if (!isset($tablepre)) {
-    $tablepre = "";
-}
-$t_users = $tablepre . "users";
-$t_domains = $tablepre . "domains";
 include("../functions/mysql.php");
 include("../functions/main.php");
 

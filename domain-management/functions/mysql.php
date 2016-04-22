@@ -16,3 +16,12 @@ try {
 }
 
 $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+if (!isset($tablepre)) {
+	$tablepre = "";
+}
+
+$t_users = $tablepre."users";
+$t_domains = $tablepre."domains";
+
+$tablepreValid = preg_match("#^[a-zA-Z0-9_]*$#", $tablepre);

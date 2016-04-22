@@ -1,10 +1,7 @@
 <?php
 require_once(dirname(__FILE__) . "/../functions/main.php");
 
-if (!getLoggedin()) {
-	header("Location: ../");
-	exit;
-}
+loginCheck();
 
 if (!isset($_GET["id"])) {
 	$msg = "E02";

@@ -7,7 +7,7 @@ function getLoggedin()
 		if (isset($_COOKIE["key"])) {
 			$username = $_COOKIE["name"];
 			$password = $_COOKIE["key"];
-            global $t_users, $mysqli;
+			global $t_users, $mysqli;
 
 			$q = $mysqli->query("SELECT password FROM " . $t_users . " WHERE username = '" . $mysqli->real_escape_string($username) . "' AND password = '" . $mysqli->real_escape_string($password) . "'");
 			while ($r = mysqli_fetch_array($q)) {
@@ -18,6 +18,14 @@ function getLoggedin()
 	} else return FALSE;
 }
 
+function loginCheck($redirectPath = "../")
+{
+	if (!getLoggedin()) {
+		header("Location: " . $redirectPath);
+		exit;
+	}
+}
+
 function makeHash($hashThis)
 {
 	for ($i = 0; $i < 42; $i++) $hashThis = hash("sha512", $hashThis);
@@ -26,7 +34,7 @@ function makeHash($hashThis)
 
 function checkDomain($domain)
 {
-    global $t_domains, $mysqli;
+	global $t_domains, $mysqli;
 	$q = $mysqli->query("SELECT domain FROM " . $t_domains . " WHERE domain = '" . mysql_real_escape_string($domain) . "'");
 	while ($r = mysqli_fetch_array($q)) {
 		return TRUE;
@@ -50,7 +58,8 @@ function checkFolder($path1, $path2)
 	}
 }
 
-function getLink($path1, $path2) {
+function getLink($path1, $path2)
+{
 	if (readlink($path1) != "") {
 		return readlink($path1);
 	} else if (readlink($path2) != "") {

@@ -27,7 +27,7 @@
 	<?php
 	include("message.php");
 
-	if (!preg_match("#^[a-zA-Z0-9_]*$#", $tablepre)) {
+	if (!$tablepreValid) {
 		echo '<script>$( ".error" ).append( "<div class=\"alert alert-danger\"><i class=\"glyphicon glyphicon-ban-circle\"></i> <b>Datenbankfehler!</b> Tabellenpräfix ungültig. Bitte überprüfe deine Konfigurationsdatei und passe diese ggf. an. (Erlaubte Zeichen: <b>a-z</b>, <b>A-Z</b>, <b>0-9</b>, <b>_</b>)</div>" )</script>';
 		$tablepre = "!";
 	} else {
