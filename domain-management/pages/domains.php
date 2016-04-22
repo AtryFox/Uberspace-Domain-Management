@@ -1,4 +1,12 @@
 <?php
+require_once(dirname(__FILE__) . "/../functions/main.php");
+
+if (!getLoggedin()) {
+	header("Location: ../");
+	exit;
+}
+
+
 $order = "";
 if (isset($_GET["order"])) $order = strtolower($_GET["order"]);
 

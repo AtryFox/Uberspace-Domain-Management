@@ -1,8 +1,13 @@
 <?php
+require_once(dirname(__FILE__) . "/../functions/main.php");
+
 if (!getLoggedin()) {
+	header("Location: ../");
 	exit;
 }
+
 ?>
+
 <form method="post" action="?p=add-domain-func">
 	<h3>Domain hinzufügen<input style="margin-left: 20px;" type="submit" class="btn btn-success" value="Senden">
 	</h3>

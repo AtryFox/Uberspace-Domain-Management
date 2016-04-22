@@ -1,42 +1,48 @@
 <?php
-	if(!isset($_POST["id"]) || !isset($_POST["path"])) {
-		$msg = "E02";
-		include("message.php");
-		exit;
-	}
+require_once(dirname(__FILE__) . "/../functions/main.php");
 
-	$id = $_POST["id"];
-	
-	$q = $mysqli->query("SELECT * FROM " . $t_domains . " WHERE id =".$id.";");
-	
-	while ($r = mysqli_fetch_array($q)) {
-		$domain = $r["domain"];
-	}
-	
-	$path = $dir.$_POST["path"]."/";
+if (!getLoggedin()) {
+	header("Location: ../");
+	exit;
+}
 
-	if (!file_exists($path))  {
-		setcookie("msg", "E03", time()+60, "/");
-		header("Location: ?p=edit-domain&id=".$id);
-		exit;
-	}
-	
-	echo $path;
+if (!isset($_POST["id"]) || !isset($_POST["path"])) {
+	$msg = "E02";
+	include("message.php");
+	exit;
+}
+
+$id = $_POST["id"];
+
+$q = $mysqli->query("SELECT * FROM " . $t_domains . " WHERE id =" . $id . ";");
+
+while ($r = mysqli_fetch_array($q)) {
+	$domain = $r["domain"];
+}
+
+$path = $dir . $_POST["path"] . "/";
+
+if (!file_exists($path)) {
+	setcookie("msg", "E03", time() + 60, "/");
+	header("Location: ?p=edit-domain&id=" . $id);
+	exit;
+}
+
+echo $path;
 
 
-	if(is_link($dir.$domain)) {
-		unlink($dir.$domain);
-	}
-	
-	if(is_link($dir."www.".$domain)) {
-		unlink($dir."www.".$domain);
-	}
+if (is_link($dir . $domain)) {
+	unlink($dir . $domain);
+}
 
-	symlink($path , $dir.$domain);
-	symlink($path , $dir."www.".$domain);
+if (is_link($dir . "www." . $domain)) {
+	unlink($dir . "www." . $domain);
+}
 
-	setcookie("msg", "E09", time()+60, "/");
+symlink($path, $dir . $domain);
+symlink($path, $dir . "www." . $domain);
 
-	header("Location: index.php");
-?>
+setcookie("msg", "E09", time() + 60, "/");
+
+header("Location: index.php");
 

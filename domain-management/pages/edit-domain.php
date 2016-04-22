@@ -1,5 +1,8 @@
 <?php
+require_once(dirname(__FILE__) . "/../functions/main.php");
+
 if (!getLoggedin()) {
+	header("Location: ../");
 	exit;
 }
 
