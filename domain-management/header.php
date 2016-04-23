@@ -8,7 +8,3 @@
 <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="css/yeti.min.css" rel="stylesheet" type="text/css">
 <link href="css/main.css" rel="stylesheet" type="text/css">
-
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
