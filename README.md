@@ -16,7 +16,7 @@ Mit dem *Uberspace Domain Management*, kurz **UDM**, lassen sich auf einen [Uber
 - [ ] Komplette Domainverwaltung (Webserver/Mailserver Konfiguration)
 - [ ] Zertifikate hinzufügen und verwalten
 - [x] Datenbankanbindung mit Prepared Statements
-- [ ] Automatische Updates (**WIP**)
+- [x] Automatischer Updatechecker
 - [ ] Passwort Salting
 
 ## Informationen ##
