@@ -11,9 +11,19 @@
 				<?php
 
 				if (getLoggedin()) {
-					echo '<li><a href="?p=add-domain">Domain hinzufügen</a></li>';
-					echo '<li><a href="https://deratrox.de/dev/Uberspace_Domain_Management/index.php?v=' . $version . '" target="_blank">Updates suchen</a></li>';
-					echo '<li><a href="?p=logout">Logout</a></li>';
+										echo '<li class="dropdown">';
+					echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Optionen <span class="caret"></span></a>';
+					echo '<ul class="dropdown-menu">';
+					echo '<li><a href="?p=add-domain"><i class="fa fa-plus fa-fw"></i> Domain hinzufügen</a></li>';
+					echo '</ul>';
+					echo '</li>';
+					echo '<li class="dropdown">';
+					echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'. $_COOKIE["name"] .' <span class="caret"></span></a>';
+					echo '<ul class="dropdown-menu">';
+					echo '<li><a href="#"><i class="fa fa-lock fa-fw"></i> Password ändern</a></li>';
+					echo '<li><a href="?p=logout"><i class="fa fa-sign-out fa-fw"></i> Abmelden</a></li>';
+					echo '</ul>';
+					echo '</li>';
 				}
 				?>
 			</ul>

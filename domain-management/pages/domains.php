@@ -23,12 +23,13 @@ echo "<h3>Hallo " . $_COOKIE["name"] . "!</h3>";
 if ($s->rowCount() == 0) {
 	echo "<p>Keine Domains vorhanden. Beginne mit dem <a href='?p=add-domain'>Hinzufügen</a> einer Domain!</p>";
 } else {
+	echo "<div class='table-responsive'>";
 	echo "<table class='table table-striped'>";
 	echo "<tr>";
 	echo "<th style='text-align: center;'><a href='?order=id'>ID</a></th>";
 	echo "<th><a href='?order=domain'>Domain</a></th>";
 	echo "<th>Verzeichnis</th>";
-	echo "<th style='text-align: center;'>Optionen</th>";
+	echo "<th style='text-align: center;' width='130'>Optionen</th>";
 	echo "</tr>";
 
 	while ($r = $s->fetch()) {
@@ -42,9 +43,9 @@ if ($s->rowCount() == 0) {
 					<br><span style='font-size:9px;'>" . $path1 . ": " . checkLink($path1, $id) . "</span>
 					<br><span style='font-size:9px;'>" . $path2 . ": " . checkLink($path2, $id) . "</span></td>";
 		echo "<td style='vertical-align: middle;' valign='middle'>" . getLink($path1, $path2) . checkFolder(readlink($path1), readlink($path2)) . "</td>";
-		echo "<td style='text-align: center; vertical-align: middle;'><div class='btn-group'>
-						<a href='?p=edit-domain&id=" . $id . "' class='btn btn-default'><i class='glyphicon glyphicon-pencil'></i></a>
-						<a href='?p=del-domain-func&id=" . $id . "' class='btn btn-default'><i class='glyphicon glyphicon-trash'></i></a>
+		echo "<td style='text-align: center; vertical-align: middle'><div class='btn-group'>
+						<a href='?p=edit-domain&id=" . $id . "' class='btn btn-info btn-sm'><i class='fa fa-pencil fa-lg  fa-fw'></i></a>
+						<a href='?p=del-domain-func&id=" . $id . "' class='btn btn-danger btn-sm'><i class='fa fa-trash fa-lg  fa-fw'></i></a>
 				  </div></td>";
 		echo "</tr>";
 
@@ -52,3 +53,4 @@ if ($s->rowCount() == 0) {
 }
 ?>
 </table>
+</div>
