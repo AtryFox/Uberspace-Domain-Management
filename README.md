@@ -24,6 +24,6 @@ Mit dem *Uberspace Domain Management*, kurz **UDM**, lassen sich auf einen [Uber
 Das UDM verwaltet deine Domains, indem es **symbolische Links** in dem www-Verzeichnis deines Uberspace' hinzufügt oder entfernt. Dies ist die einzige Möglichkeit mehrere Domains auf einem Uberspace mit verschiedenen Seiten zu verknüpfen.
 Dein www-Verzeichnis findest du übrigens unter `/var/www/virtual/USERNAME/`.
 ##### Wie lassen sich Updates installieren?#####
-Ist eine neue Release-Version verfügbar erscheint eine Benachrichtigung im UDM. Installiert wird das Update mit Hilfe von einigen Befehlen über den SSH-Zugang deines Uberspace.
+Ist eine neue Release-Version verfügbar erscheint eine Benachrichtigung im UDM. Installiert wird das Update mit Hilfe von einigen Befehlen über den SSH-Zugang deines Uberspace. Eine genaue Anleitung, wie man das Update installiert, wird ebenfalls in der Benachrichtigung erklärt.
 ##### Ist das Management auch mit anderen Hostern kompatibel? #####
 Mit sehr hoher Wahrscheinlichkeit nicht. Es wurde speziell für [Uberspace](https://uberspace.de) entwickelt und auf das System von Uberspace angepasst. Du kannst das Projekt natürlich gerne **forken** und für einen anderen beliebigen Hoster anpassen.
