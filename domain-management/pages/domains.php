@@ -21,7 +21,7 @@ $s->execute();
 echo "<h3>Hallo " . $_COOKIE["name"] . "!</h3>";
 
 if ($s->rowCount() == 0) {
-	echo "<p>Keine Domains vorhanden. Beginne mit dem <a href='?p=add-domain'>hinzufügen</a> einer Domain!</p>";
+	echo "<p>Keine Domains vorhanden. Beginne mit dem <a href='?p=add-domain'>Hinzufügen</a> einer Domain!</p>";
 } else {
 	echo "<table class='table table-striped'>";
 	echo "<tr>";

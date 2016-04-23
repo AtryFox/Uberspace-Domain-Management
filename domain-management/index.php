@@ -32,10 +32,11 @@ require_once("functions/mysql.php");
 
 $dir = "/var/www/virtual/" . $uberspacename . "/";
 
-if (!isset($_COOKIE["update"])) {
-	setcookie("update", checkUpdate(), time() + (3600 * 24), "/");
-} else {
+if (isset($_COOKIE["update"])) {
 	$updateStatus = $_COOKIE["update"];
+} else {
+	$updateStatus = checkUpdate();
+	setcookie("update", $updateStatus, time() + (3600), "/");
 }
 ?>
 
