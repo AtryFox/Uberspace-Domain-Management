@@ -79,3 +79,23 @@ function getLink($path1, $path2)
 		return "<span style='color: red;'>Der Link konnte nicht zurückverfolgt werden.</span>";
 	}
 }
+
+function checkUpdate() {
+	global $version;
+
+	$rawLatestVersion = file_get_contents("https://deratrox.de/dev/Uberspace_Domain_Management/cur.txt");
+	$latestVersion = explode(".", $rawLatestVersion);
+	
+	if(!is_array($latestVersion)) return -1;
+	if(sizeof($latestVersion) != 3) return -1;
+	
+	$installedVersion = explode(".", $version);
+	if(!is_array($installedVersion)) return -1;
+	if(sizeof($installedVersion) != 3) return -1;
+
+	if($installedVersion[0] < $latestVersion[0]) return $rawLatestVersion;
+	else if($installedVersion[1] < $latestVersion[1] && $installedVersion[0] == $latestVersion[0]) return $rawLatestVersion;
+	else if($installedVersion[2] < $latestVersion[2] && $installedVersion[1] == $latestVersion[1]) return $rawLatestVersion;
+	
+	return -1;
+}

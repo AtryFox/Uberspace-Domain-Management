@@ -47,6 +47,7 @@ if ($s->rowCount() == 0) {
 						<a href='?p=del-domain-func&id=" . $id . "' class='btn btn-default'><i class='glyphicon glyphicon-trash'></i></a>
 				  </div></td>";
 		echo "</tr>";
+
 	}
 }
 ?>
