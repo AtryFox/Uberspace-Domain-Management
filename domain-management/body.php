@@ -70,10 +70,7 @@ rm -r update</pre>
 			switch ($site) {
 				case "home":
 					require_once ("data/domains.php");
-					$test = new Domains();
-					$testObj = $test->domains[0];
-					
-					echo $m->render('domains', $test);
+					echo $m->render('domains', new Domains());
 					break;
 				case "logout":
 					include("functions/logout.php");
@@ -85,7 +82,7 @@ rm -r update</pre>
 					include("pages/edit-domain.php");
 					break;
 				case "add-domain-func":
-					include("functions/add-domain.php");
+					echo $m->render('add-domain');
 					break;
 				case "del-domain-func":
 					include("functions/del-domain.php");
