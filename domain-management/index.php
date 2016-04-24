@@ -38,6 +38,15 @@ if (isset($_COOKIE["update"])) {
 	$updateStatus = checkUpdate();
 	setcookie("update", $updateStatus, time() + (3600), "/");
 }
+
+require 'assets/src/Mustache/Autoloader.php';
+Mustache_Autoloader::register();
+
+$m = new Mustache_Engine(array(
+	'loader'          => new Mustache_Loader_FilesystemLoader(dirname(__FILE__).'/views/', array('extension' => '.mustache')),
+	'partials_loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__).'/views/', array('extension' => '.mustache')),
+));
+
 ?>
 
 <!DOCTYPE html>

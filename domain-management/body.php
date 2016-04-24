@@ -69,7 +69,11 @@ rm -r update</pre>
 
 			switch ($site) {
 				case "home":
-					include("pages/domains.php");
+					require_once ("data/domains.php");
+					$test = new Domains();
+					$testObj = $test->domains[0];
+					
+					echo $m->render('domains', $test);
 					break;
 				case "logout":
 					include("functions/logout.php");
