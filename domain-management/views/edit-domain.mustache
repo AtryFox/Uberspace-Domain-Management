@@ -1,1 +1,19 @@
-// TO DO
+<form method="post" action="?p=edit-domain-func">
+	<h3>Domain bearbeiten<input style="margin-left: 20px;" type="submit" class="btn btn-success" value="Senden"></h3>
+	<input type="hidden" name="id" value="{{id}}">
+
+	<div class="form-group">
+		<div class="input-group">
+			<span class="input-group-addon">www.</span>
+			<input type="text" class="form-control" required value="{{domain}}" disabled="true">
+		</div>
+		<br>
+
+		<div class="input-group">
+			<span class="input-group-addon">{{getBaseDir}}</span>
+			<input type="text" class="form-control" name="path" required
+				   placeholder="path/to/folder (Groß- und Kleinschreibung beachten!)" value="{{shortPath}}">
+			<span class="input-group-addon">/</span>
+		</div>
+	</div>
+</form>

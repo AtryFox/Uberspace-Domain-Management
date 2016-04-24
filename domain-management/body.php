@@ -11,14 +11,14 @@
 				<?php
 
 				if (getLoggedin()) {
-										echo '<li class="dropdown">';
+					echo '<li class="dropdown">';
 					echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Optionen <span class="caret"></span></a>';
 					echo '<ul class="dropdown-menu">';
 					echo '<li><a href="?p=add-domain"><i class="fa fa-plus fa-fw"></i> Domain hinzufügen</a></li>';
 					echo '</ul>';
 					echo '</li>';
 					echo '<li class="dropdown">';
-					echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'. $_COOKIE["name"] .' <span class="caret"></span></a>';
+					echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $_COOKIE["name"] . ' <span class="caret"></span></a>';
 					echo '<ul class="dropdown-menu">';
 					echo '<li><a href="#"><i class="fa fa-lock fa-fw"></i> Password ändern</a></li>';
 					echo '<li><a href="?p=logout"><i class="fa fa-sign-out fa-fw"></i> Abmelden</a></li>';
@@ -43,7 +43,7 @@
 	} else {
 
 		if (!getLoggedin()) {
-			include("pages/login.php");
+			echo $m->render('login');
 		} else {
 
 			if ($updateStatus != -1) {
@@ -65,24 +65,26 @@ rm -r update</pre>
 					</div>
 					</div>';
 			}
-			
+
 
 			switch ($site) {
 				case "home":
-					require_once ("data/domains.php");
+					require_once("data/domains.php");
 					echo $m->render('domains', new Domains());
 					break;
 				case "logout":
 					include("functions/logout.php");
 					break;
 				case "add-domain":
-					include("pages/add-domain.php");
+					require_once("data/main.php");
+					echo $m->render('add-domain', new Main());
 					break;
 				case "edit-domain":
-					include("pages/edit-domain.php");
+					require_once("data/domains.php");
+					echo $m->render('edit-domain', new Domain($_GET["id"]));
 					break;
 				case "add-domain-func":
-					echo $m->render('add-domain');
+					include("functions/add-domain.php");
 					break;
 				case "del-domain-func":
 					include("functions/del-domain.php");
@@ -99,7 +101,8 @@ rm -r update</pre>
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title">Benachrichtigung ausblenden</h4>
 				</div>
 				<div class="modal-body">
@@ -108,13 +111,13 @@ rm -r update</pre>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
 					<button type="button" class="btn btn-primary" onclick="disableModal(1)">1 Tag</button>
-					<button type="button" class="btn btn-primary" onclick="disableModal(7)" >1 Woche</button>
+					<button type="button" class="btn btn-primary" onclick="disableModal(7)">1 Woche</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 </div>
 <div class="container">
 	<?php include("footer.php"); ?>

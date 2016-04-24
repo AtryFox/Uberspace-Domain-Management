@@ -46,10 +46,28 @@ class Domains extends Main
 	}
 }
 
-class Domain
+class Domain extends Main
 {
-	public function __construct($_id, $_domain)
+	public function __construct($_id, $_domain = null)
 	{
+		if ($_domain == null) $this->getDomainById($_id);
+		else $this->loadValues($_id, $_domain);
+	}
+
+	private function getDomainById($_id) {
+		global $pdo, $t_domains;
+
+		$s = $pdo->prepare("SELECT * FROM $t_domains WHERE id = :id LIMIT 1");
+		$s->execute(array('id' => $_id));
+
+		if($s->rowCount() == 0) return false;
+
+		while ($r = $s->fetch()) {
+			$this->loadValues($r["id"], $r["domain"]);
+		}
+	}
+
+	private function loadValues($_id, $_domain) {
 		global $dir;
 
 		$this->id = $_id;
@@ -60,6 +78,7 @@ class Domain
 		$this->path2Status = checkLink($this->path2, $this->id);
 		$this->realPath = getLink($this->path1, $this->path2);
 		$this->realPathStatus = checkFolder(readlink($this->path1), readlink($this->path2));
+		$this->shortPath = substr(str_replace($dir, "", readlink($dir . $this->domain)), 0, -1);
 	}
 
 	public $id;
@@ -70,5 +89,6 @@ class Domain
 	public $path2Status;
 	public $realPath;
 	public $realPathStatus;
+	public $shortPath;
 
 }
