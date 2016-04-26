@@ -1,6 +1,6 @@
-<h3>Hallo {{getName}}!</h3>
+<h3>Hallo {{Main.getName}}!</h3>
 
-{{^domainsEmpty}}
+{{^Domains.domainsEmpty}}
 	<div class='table-responsive'>
 		<table class='table table-striped'>
 			<tr>
@@ -10,7 +10,7 @@
 				<th style='text-align: center;' width='130'>Optionen</th>
 			</tr>
 
-			{{#domains}}
+			{{#Domains.domains}}
 				<tr>
 					<td style='text-align: center; vertical-align: middle;' valign='middle'>{{id}}</td>
 					<td style='vertical-align: middle;' valign='middle'>{{domain}} (www.{{domain}})
@@ -29,12 +29,12 @@
 						</div>
 					</td>
 				</tr>
-			{{/domains}}
+			{{/Domains.domains}}
 		</table>
 	</div>
 
-{{/domainsEmpty}}
+{{/Domains.domainsEmpty}}
 
-{{#domainsEmpty}}
+{{#Domains.domainsEmpty}}
 	<p>Keine Domains vorhanden. Beginne mit dem <a href='?p=add-domain'>Hinzufügen</a> einer Domain!</p>
-{{/domainsEmpty}}
+{{/Domains.domainsEmpty}}

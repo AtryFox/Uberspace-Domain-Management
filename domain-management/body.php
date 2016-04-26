@@ -69,19 +69,16 @@ rm -r update</pre>
 
 			switch ($site) {
 				case "home":
-					require_once("data/domains.php");
-					echo $m->render('domains', new Domains());
+					echo $m->render('domains', $data);
 					break;
 				case "logout":
 					include("functions/logout.php");
 					break;
 				case "add-domain":
-					require_once("data/main.php");
-					echo $m->render('add-domain', new Main());
+					echo $m->render('add-domain', $data);
 					break;
 				case "edit-domain":
-					require_once("data/domains.php");
-					echo $m->render('edit-domain', new Domain($_GET["id"]));
+					echo $m->render('edit-domain', $data);
 					break;
 				case "add-domain-func":
 					include("functions/add-domain.php");
@@ -116,8 +113,6 @@ rm -r update</pre>
 			</div>
 		</div>
 	</div>
-
-
 </div>
 <div class="container">
 	<?php include("footer.php"); ?>

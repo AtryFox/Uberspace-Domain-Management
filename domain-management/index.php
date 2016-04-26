@@ -47,6 +47,23 @@ $m = new Mustache_Engine(array(
 	'partials_loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__).'/views/', array('extension' => '.mustache')),
 ));
 
+$data = array();
+
+require_once("data/main.php");
+$data['Main'] = new Main();
+
+switch ($site) {
+	case "home":
+		require_once("data/domains.php");
+		$data['Domains'] = new Domains();
+		break;
+	case "edit-domain":
+		require_once("data/domains.php");
+		$data['Domain'] = new Domain();
+		break;
+}
+
+
 ?>
 
 <!DOCTYPE html>

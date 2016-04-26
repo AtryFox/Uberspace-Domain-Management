@@ -2,7 +2,7 @@
 require_once(__DIR__ . "/main.php");
 require_once(__DIR__ . "/../functions/main.php");
 
-class Domains extends Main
+class Domains
 {
 	public function __construct()
 	{
@@ -46,7 +46,7 @@ class Domains extends Main
 	}
 }
 
-class Domain extends Main
+class Domain
 {
 	public function __construct($_id, $_domain = null)
 	{
