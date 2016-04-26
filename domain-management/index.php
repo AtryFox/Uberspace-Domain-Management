@@ -1,4 +1,5 @@
 <?php
+// INIT EVERYTHING //
 $version = "1.3.1";
 
 if (!file_exists("config.php")) {
@@ -32,6 +33,7 @@ require_once("functions/mysql.php");
 
 $dir = "/var/www/virtual/" . $uberspacename . "/";
 
+// CHECK FOR UPDATE
 if (isset($_COOKIE["update"])) {
 	$updateStatus = $_COOKIE["update"];
 } else {
@@ -39,6 +41,7 @@ if (isset($_COOKIE["update"])) {
 	setcookie("update", $updateStatus, time() + (3600), "/");
 }
 
+// MUSTACHE ENGINE
 require 'assets/src/Mustache/Autoloader.php';
 Mustache_Autoloader::register();
 
@@ -47,6 +50,7 @@ $m = new Mustache_Engine(array(
 	'partials_loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__).'/views/', array('extension' => '.mustache')),
 ));
 
+// INIT/DECLARE DATA ARRAY CONTAINING EVERYTHING THAT'S NEEDED FOR THE REQUESTED PAGE
 $data = array();
 
 require_once("data/main.php");
