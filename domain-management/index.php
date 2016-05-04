@@ -1,4 +1,6 @@
 <?php
+
+
 // INIT EVERYTHING //
 $version = "1.3.1";
 
@@ -41,6 +43,7 @@ if (isset($_COOKIE["update"])) {
 	setcookie("update", $updateStatus, time() + (3600), "/");
 }
 
+
 // MUSTACHE ENGINE
 require 'assets/src/Mustache/Autoloader.php';
 Mustache_Autoloader::register();
@@ -62,6 +65,10 @@ switch ($site) {
 	case "edit-domain":
 		require_once("data/domains.php");
 		$data->Domain = new Domain();
+		break;
+	case "uberspace":
+		require_once("data/uberspace.php");
+		$data->Uberspace = new Uberspace();
 		break;
 }
 

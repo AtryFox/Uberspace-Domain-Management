@@ -18,3 +18,7 @@ hr {
 .btn-group {
     display: flex;
 }
+
+.table-vcenter td {
+    vertical-align: middle!important;
+}

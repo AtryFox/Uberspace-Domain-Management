@@ -15,6 +15,7 @@
 					echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Optionen <span class="caret"></span></a>';
 					echo '<ul class="dropdown-menu">';
 					echo '<li><a href="?p=add-domain"><i class="fa fa-plus fa-fw"></i> Domain hinzufügen</a></li>';
+					echo '<li><a href="?p=uberspace"><i class="fa fa-eye fa-fw"></i> Aufgeschaltete Doamins / Zertifikate anzeigen</a></li>';
 					echo '</ul>';
 					echo '</li>';
 					echo '<li class="dropdown">';
@@ -88,6 +89,9 @@ rm -r update</pre>
 					break;
 				case "edit-domain-func":
 					include("functions/edit-domain.php");
+					break;
+				case "uberspace":
+					echo $m->render('uberspace', $data);
 					break;
 			}
 		}

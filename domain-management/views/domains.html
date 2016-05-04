@@ -2,7 +2,7 @@
 
 {{^Domains.domainsEmpty}}
 	<div class='table-responsive'>
-		<table class='table table-striped'>
+		<table class='table table-striped table-vcenter'>
 			<tr>
 				<th style='text-align: center;'><a href='?order=id'>ID</a></th>
 				<th><a href='?order=domain'>Domain</a></th>
@@ -12,17 +12,17 @@
 
 			{{#Domains.domains}}
 				<tr>
-					<td style='text-align: center; vertical-align: middle;' valign='middle'>{{id}}</td>
-					<td style='vertical-align: middle;' valign='middle'>{{domain}} (www.{{domain}})
+					<td style='text-align: center'>{{id}}</td>
+					<td>{{domain}} (www.{{domain}})
 						<br>
 						<span style='font-size:9px;'>{{path1}}: {{{path1Status}}}</span>
 						<br>
 						<span style='font-size:9px;'>{{path2}}: {{{path2Status}}}</span>
 					</td>
-					<td style='vertical-align: middle;' valign='middle'>
+					<td>
 						{{realPath}}{{{realPathStatus}}}
 					</td>
-					<td style='text-align: center; vertical-align: middle'>
+					<td style='text-align: center;'>
 						<div class='btn-group'>
 							<a href='?p=edit-domain&id={{id}}' class='btn btn-info btn-sm'><i class='fa fa-pencil fa-lg  fa-fw'></i></a>
 							<a href='?p=del-domain-func&id={{id}}' class='btn btn-danger btn-sm'><i class='fa fa-trash fa-lg  fa-fw'></i></a>
