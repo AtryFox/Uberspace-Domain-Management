@@ -46,24 +46,22 @@ require 'assets/src/Mustache/Autoloader.php';
 Mustache_Autoloader::register();
 
 $m = new Mustache_Engine(array(
-	'loader'          => new Mustache_Loader_FilesystemLoader(dirname(__FILE__).'/views/', array('extension' => '.mustache')),
-	'partials_loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__).'/views/', array('extension' => '.mustache')),
+	'loader'          => new Mustache_Loader_FilesystemLoader(dirname(__FILE__).'/views/', array('extension' => '.html')),
+	'partials_loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__).'/views/', array('extension' => '.html')),
 ));
 
 // INIT/DECLARE DATA ARRAY CONTAINING EVERYTHING THAT'S NEEDED FOR THE REQUESTED PAGE
-$data = array();
-
 require_once("data/main.php");
-$data['Main'] = new Main();
+$data->Main = new Main();
 
 switch ($site) {
 	case "home":
 		require_once("data/domains.php");
-		$data['Domains'] = new Domains();
+		$data->Domains = new Domains();
 		break;
 	case "edit-domain":
 		require_once("data/domains.php");
-		$data['Domain'] = new Domain();
+		$data->Domain = new Domain();
 		break;
 }
 
