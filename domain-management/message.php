@@ -3,7 +3,7 @@ if(isset($msg)) {
 	switch($msg) {
 		case "E00": echo '<div class="alert alert-success">'.$xButton.'<i class="fa fa-sign-in fa-fw" aria-hidden="true"></i> <b>Login erfolgreich!</b> Du bist nun eingeloggt.</div>'; break;
 		case "E01": echo '<div class="alert alert-danger">'.$xButton.'<i class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i> <b>Login fehlgeschlagen!</b> Bitte versuche es erneut.</div>'; break;
-		case "E02": echo '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i> Entweder es wurde etwas nicht richtig übertragen oder du hast diese Seite einfach so aufgerufen!</div>'; break;
+		case "E02": echo '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i> Fehler bei der Datenübertragung!</div>'; break;
 		case "E03": echo '<div class="alert alert-danger">'.$xButton.'<i class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i> <b>Domain nicht hinzugefügt oder bearbeitet!</b> Der angegebene Pfad existiert nicht.</div>'; break;
 		case "E04": echo '<div class="alert alert-danger">'.$xButton.'<i class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i> <b>Domain nicht hinzugefügt!</b> Die Domain existiert bereits.</div>'; break;
 		case "E05": echo '<div class="alert alert-success">'.$xButton.'<i class="fa fa-link fa-fw" aria-hidden="true"></i> <b>Domain hinzugefügt!</b> Sybolische Links wurden erstellt.</div>'; break;

@@ -1,8 +1,6 @@
 <?php
-
-
 // INIT EVERYTHING //
-$version = "1.4.0";
+$version = "1.4.1";
 
 if (!file_exists("config.php")) {
 	header("Location: install.php");
@@ -64,7 +62,14 @@ switch ($site) {
 		break;
 	case "edit-domain":
 		require_once("data/domains.php");
-		$data->Domain = new Domain();
+
+		if (!isset($_GET["id"])) {
+			setcookie("msg", "E02", time()+60, "/");
+			header("Location: index.php");
+
+			exit;
+		}
+		$data->Domain = new Domain($_GET["id"]);
 		break;
 	case "uberspace":
 		require_once("data/uberspace.php");
