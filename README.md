@@ -17,7 +17,7 @@ Mit dem *Uberspace Domain Management*, kurz **UDM**, lassen sich auf einen [Uber
 - [ ] Zertifikate hinzufügen und verwalten (WIP)
 - [x] Datenbankanbindung mit Prepared Statements
 - [x] Automatischer Updatechecker
-- [ ] Passwort Salting
+- [x] Passwort Salting
 
 ## Informationen ##
 ##### Wie funktioniert das Tool eigentlich? #####
