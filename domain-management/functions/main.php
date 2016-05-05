@@ -9,18 +9,20 @@ function getLoggedin()
 			$password = $_COOKIE["key"];
 			global $t_users, $pdo, $tablepreValid;
 
-			if(!isset($pdo)) {
+			if (!isset($pdo)) {
 				return false;
 			}
 
-			if(!$tablepreValid) {
+			if (!$tablepreValid) {
 				return false;
 			}
 
-			$s = $pdo->prepare("SELECT password FROM $t_users WHERE username = :username AND password = :password LIMIT 1");
+			$s = $pdo->prepare("SELECT password, salt FROM $t_users WHERE username = :username AND password = :password LIMIT 1");
 			$s->execute(array('username' => $username, 'password' => $password));
 			
+			
 			while ($r = $s->fetch()) {
+				if (empty($r["salt"])) return false;
 				return TRUE;
 			}
 			return FALSE;
@@ -36,11 +38,26 @@ function loginCheck($redirectPath = "../")
 	}
 }
 
+// deprecated //
 function makeHash($hashThis)
 {
 	for ($i = 0; $i < 42; $i++) $hashThis = hash("sha512", $hashThis);
 	return $hashThis;
 }
+
+function makeHashSecure($hashThis, &$salt)
+{
+	$salt = md5(rand() . mcrypt_create_iv(32));
+	for ($i = 0; $i < 42; $i++) $hashThis = hash("sha512", $hashThis . $salt);
+	return $hashThis;
+}
+
+function makeSaltedHash($hashThis, $salt)
+{
+	for ($i = 0; $i < 42; $i++) $hashThis = hash("sha512", $hashThis . $salt);
+	return $hashThis;
+}
+
 
 function checkDomain($domain)
 {
@@ -80,22 +97,23 @@ function getLink($path1, $path2)
 	}
 }
 
-function checkUpdate() {
+function checkUpdate()
+{
 	global $version;
 
 	$rawLatestVersion = file_get_contents("https://deratrox.de/dev/Uberspace_Domain_Management/cur.txt");
 	$latestVersion = explode(".", $rawLatestVersion);
-	
-	if(!is_array($latestVersion)) return -1;
-	if(sizeof($latestVersion) != 3) return -1;
-	
-	$installedVersion = explode(".", $version);
-	if(!is_array($installedVersion)) return -1;
-	if(sizeof($installedVersion) != 3) return -1;
 
-	if($installedVersion[0] < $latestVersion[0]) return $rawLatestVersion;
-	else if($installedVersion[1] < $latestVersion[1] && $installedVersion[0] == $latestVersion[0]) return $rawLatestVersion;
-	else if($installedVersion[2] < $latestVersion[2] && $installedVersion[1] == $latestVersion[1]) return $rawLatestVersion;
-	
+	if (!is_array($latestVersion)) return -1;
+	if (sizeof($latestVersion) != 3) return -1;
+
+	$installedVersion = explode(".", $version);
+	if (!is_array($installedVersion)) return -1;
+	if (sizeof($installedVersion) != 3) return -1;
+
+	if ($installedVersion[0] < $latestVersion[0]) return $rawLatestVersion;
+	else if ($installedVersion[1] < $latestVersion[1] && $installedVersion[0] == $latestVersion[0]) return $rawLatestVersion;
+	else if ($installedVersion[2] < $latestVersion[2] && $installedVersion[1] == $latestVersion[1]) return $rawLatestVersion;
+
 	return -1;
 }

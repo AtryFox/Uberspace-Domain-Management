@@ -62,7 +62,6 @@ switch ($site) {
 		break;
 	case "edit-domain":
 		require_once("data/domains.php");
-
 		if (!isset($_GET["id"])) {
 			setcookie("msg", "E02", time()+60, "/");
 			header("Location: index.php");
@@ -76,7 +75,6 @@ switch ($site) {
 		$data->Uberspace = new Uberspace();
 		break;
 }
-
 
 ?>
 

@@ -26,7 +26,7 @@ include("functions/main.php");
 	include("message.php");
 
 	if (isset($_POST["install"]) && isset($_POST["username"]) && isset($_POST["password1"]) && isset($_POST["password2"]) && isset($_POST["mysql_host"]) && isset($_POST["mysql_user"]) && isset($_POST["mysql_pass"]) && isset($_POST["mysql_data"]) && isset($_POST["mysql_pref"]) && isset($_POST["uberspacen"])) {
-		$username = strtolower($_POST["username"]);
+		$username = $_POST["username"];
 		$password1 = makeHash($_POST["password1"]);
 		$password2 = makeHash($_POST["password2"]);
 
@@ -46,7 +46,10 @@ include("functions/main.php");
 		if (!preg_match("#^[a-zA-Z0-9_]*$#", $mysql_pref)) {
 			setcookie("msg", "I02", time() + 60, "/");
 			header("Location: install.php");
-		} 
+		}
+
+		$salt = "";
+		$password = makeHashSecure($password1, $salt);
 
 		$connected = true;
 
@@ -62,16 +65,14 @@ include("functions/main.php");
 		$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
 		if ($connected) {
-			// TO DO: Escape table name
-
-			$s = $pdo->prepare("CREATE TABLE " . $mysql_pref . "users (id int(255) NOT NULL auto_increment,username varchar(256) NOT NULL,password varchar(128) NOT NULL, PRIMARY KEY (id))");
+			$s = $pdo->prepare("CREATE TABLE " . $mysql_pref . "users (id int(255) NOT NULL auto_increment,username varchar(256) NOT NULL,password varchar(128) NOT NULL, salt VARCHAR(256) NOT NULL, PRIMARY KEY (id))");
 			$s->execute();
 
 			$s = $pdo->prepare("CREATE TABLE " . $mysql_pref . "domains (id int(255) NOT NULL auto_increment,domain varchar(256) NOT NULL, PRIMARY KEY (id))");
 			$s->execute();
 
-			$s = $pdo->prepare("INSERT INTO " . $mysql_pref . "users (username, password) VALUES (:username, :password)");
-			$s->execute(array('username' => $username, 'password' => $password1));
+			$s = $pdo->prepare("INSERT INTO " . $mysql_pref . "users (username, password, salt) VALUES (:username, :password, :salt)");
+			$s->execute(array('username' => $username, 'password' => $password, 'salt' => $salt));
 
 			/* CONFIG CREATION */
 			{

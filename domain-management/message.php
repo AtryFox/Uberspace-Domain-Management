@@ -2,6 +2,7 @@
 if(isset($msg)) {
 	switch($msg) {
 		case "E00": echo '<div class="alert alert-success">'.$xButton.'<i class="fa fa-sign-in fa-fw" aria-hidden="true"></i> <b>Login erfolgreich!</b> Du bist nun eingeloggt.</div>'; break;
+		case "E00.1": echo '<div class="alert alert-warning">'.$xButton.'<i class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i> <b>Login erfolgreich!</b> Du bist nun eingeloggt. Bitte ändere jedoch aus Sicherheitsgründen dein Passwort, da die Passwörter nun <a href="https://de.wikipedia.org/wiki/Salt_(Kryptologie)" rel="noopener noreferrer"><i>gesalzen</i></a> gespeichert werden und dein altes Passwort nur in das neue Format konvertiert wurde. <a href="?edit-password">Passwort ändern <i class="fa fa-arrow-right fa-fw"></i></a></div>'; break;
 		case "E01": echo '<div class="alert alert-danger">'.$xButton.'<i class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i> <b>Login fehlgeschlagen!</b> Bitte versuche es erneut.</div>'; break;
 		case "E02": echo '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i> Fehler bei der Datenübertragung!</div>'; break;
 		case "E03": echo '<div class="alert alert-danger">'.$xButton.'<i class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i> <b>Domain nicht hinzugefügt oder bearbeitet!</b> Der angegebene Pfad existiert nicht.</div>'; break;
