@@ -75,22 +75,15 @@ function checkLink($link, $id)
     if (is_link($link)) {
         return "<span style='color: green;'>Verfügbar</span>";
     } else {
-        return "<span style='color: red;'>Fehler <a href='?p=edit-domain&id=" . $id . "'>(Fix it!)</a></span>";
-    }
-}
-
-function checkFolder($path1, $path2)
-{
-    if (!file_exists($path1) && $path1 != "" && !file_exists($path2) && $path2 != "") {
-        return "<br><span style='color: red;'>Der angegebene Ordner existiert nicht mehr.</span>";
+        return "<span style='color: red;'><i class='fa fa-exclamation-triangle fa-fw'></i> Fehler (<a href='?p=edit-domain&id=" . $id . "'>Fehler beheben!</a>)</span>";
     }
 }
 
 function getLink($path1, $path2)
 {
-    if (readlink($path1) != "") {
+    if (file_exists($path1) ? readlink($path1) != "" : false) {
         return readlink($path1);
-    } else if (readlink($path2) != "") {
+    } else if (file_exists($path2) ? readlink($path2) != "" : false) {
         return readlink($path2);
     } else {
         return "<span style='color: red;'>Der Link konnte nicht zurückverfolgt werden.</span>";
