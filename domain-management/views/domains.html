@@ -1,40 +1,42 @@
 <h3>Hallo {{Main.getName}}!</h3>
 
 {{^Domains.domainsEmpty}}
-	<div class='table-responsive'>
-		<table class='table table-striped table-vcenter'>
-			<tr>
-				<th style='text-align: center;'><a href='?order=id'>ID</a></th>
-				<th><a href='?order=domain'>Domain</a></th>
-				<th>Verzeichnis</th>
-				<th style='text-align: center;' width='130'>Optionen</th>
-			</tr>
+    <div class='table-responsive'>
+        <table class='table table-striped table-vcenter'>
+            <tr>
+                <th style='text-align: center;'><a href='?order=id'>ID</a></th>
+                <th><a href='?order=domain'>Domain</a></th>
+                <th>Verzeichnis</th>
+                <th style='text-align: center;' width='130'>Optionen</th>
+            </tr>
 
-			{{#Domains.domains}}
-				<tr>
-					<td style='text-align: center'>{{id}}</td>
-					<td>{{domain}} (www.{{domain}})
-						<br>
-						<span style='font-size:9px;'>{{path1}}: {{{path1Status}}}</span>
-						<br>
-						<span style='font-size:9px;'>{{path2}}: {{{path2Status}}}</span>
-					</td>
-					<td>
-						{{realPath}}{{{realPathStatus}}}
-					</td>
-					<td style='text-align: center;'>
-						<div class='btn-group'>
-							<a href='?p=edit-domain&id={{id}}' class='btn btn-info btn-sm'><i class='fa fa-pencil fa-lg  fa-fw'></i></a>
-							<a href='?p=del-domain-func&id={{id}}' class='btn btn-danger btn-sm'><i class='fa fa-trash fa-lg  fa-fw'></i></a>
-						</div>
-					</td>
-				</tr>
-			{{/Domains.domains}}
-		</table>
-	</div>
+            {{#Domains.domains}}
+                <tr>
+                    <td style='text-align: center'>{{id}}</td>
+                    <td>{{domain}} (www.{{domain}})
+                        <br>
+                        <span style='font-size:9px;'>{{path1}}: {{{path1Status}}}</span>
+                        <br>
+                        <span style='font-size:9px;'>{{path2}}: {{{path2Status}}}</span>
+                    </td>
+                    <td>
+                        {{realPath}}{{{realPathStatus}}}
+                    </td>
+                    <td style='text-align: center;'>
+                        <div class='btn-group'>
+                            <a href='?p=edit-domain&id={{id}}' class='btn btn-info btn-sm'><i
+                                    class='fa fa-pencil fa-lg  fa-fw'></i></a>
+                            <a href='?p=del-domain-func&id={{id}}' class='btn btn-danger btn-sm'><i
+                                    class='fa fa-trash fa-lg  fa-fw'></i></a>
+                        </div>
+                    </td>
+                </tr>
+            {{/Domains.domains}}
+        </table>
+    </div>
 
 {{/Domains.domainsEmpty}}
 
 {{#Domains.domainsEmpty}}
-	<p>Keine Domains vorhanden. Beginne mit dem <a href='?p=add-domain'>Hinzufügen</a> einer Domain!</p>
+    <p>Keine Domains vorhanden. Beginne mit dem <a href='?p=add-domain'>Hinzufügen</a> einer Domain!</p>
 {{/Domains.domainsEmpty}}
