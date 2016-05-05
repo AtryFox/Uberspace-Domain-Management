@@ -12,6 +12,9 @@ if(isset($msg)) {
 		case "E07": echo '<div class="alert alert-success">'.$xButton.'<i class="fa fa-chain-broken fa-fw" aria-hidden="true"></i> <b>Domain entfernt!</b> Sybolische Links wurden gelöscht.</div>'; break;
 		case "E08": echo '<div class="alert alert-success">'.$xButton.'<i class="fa fa-sign-out fa-fw" aria-hidden="true"></i> <b>Logout erfolgreich!</b></div>'; break;
 		case "E09": echo '<div class="alert alert-success">'.$xButton.'<i class="fa fa-pencil fa-fw" aria-hidden="true"></i> <b>Domain bearbeitet!</b> Sybolische Links wurden neu erstellt.</div>'; break;
+		case "E10": echo '<div class="alert alert-danger">'.$xButton.'<i class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i> <b>Fehler!</b> Aktuelles Passwort ist falsch.</div>'; break;
+		case "E11": echo '<div class="alert alert-danger">'.$xButton.'<i class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i> <b>Fehler!</b> Die eingegebenen Passwörter stimmen nicht überein.</div>'; break;
+		case "E12": echo '<div class="alert alert-success">'.$xButton.'<i class="fa fa-lock fa-fw" aria-hidden="true"></i> <b>Passwort geändert!</b> Bitte logge dich erneut ein.</div>'; break;
 
 		case "I00": echo '
 		<div class="panel panel-success">

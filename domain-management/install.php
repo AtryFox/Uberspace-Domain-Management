@@ -27,8 +27,8 @@ include("functions/main.php");
 
 	if (isset($_POST["install"]) && isset($_POST["username"]) && isset($_POST["password1"]) && isset($_POST["password2"]) && isset($_POST["mysql_host"]) && isset($_POST["mysql_user"]) && isset($_POST["mysql_pass"]) && isset($_POST["mysql_data"]) && isset($_POST["mysql_pref"]) && isset($_POST["uberspacen"])) {
 		$username = $_POST["username"];
-		$password1 = makeHash($_POST["password1"]);
-		$password2 = makeHash($_POST["password2"]);
+		$password1 = $_POST["password1"];
+		$password2 = $_POST["password2"];
 
 		$mysql_host = $_POST["mysql_host"];
 		$mysql_user = $_POST["mysql_user"];

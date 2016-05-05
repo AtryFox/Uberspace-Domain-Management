@@ -21,7 +21,7 @@
 					echo '<li class="dropdown">';
 					echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $_COOKIE["name"] . ' <span class="caret"></span></a>';
 					echo '<ul class="dropdown-menu">';
-					echo '<li><a href="#"><i class="fa fa-lock fa-fw"></i> Password ändern</a></li>';
+					echo '<li><a href="?p=edit-password"><i class="fa fa-lock fa-fw"></i> Password ändern</a></li>';
 					echo '<li><a href="?p=logout"><i class="fa fa-sign-out fa-fw"></i> Abmelden</a></li>';
 					echo '</ul>';
 					echo '</li>';
@@ -81,6 +81,9 @@ rm -r update</pre>
 				case "edit-domain":
 					echo $m->render('edit-domain', $data);
 					break;
+				case "edit-password":
+					echo $m->render('edit-password', $data);
+					break;
 				case "add-domain-func":
 					include("functions/add-domain.php");
 					break;
@@ -89,6 +92,9 @@ rm -r update</pre>
 					break;
 				case "edit-domain-func":
 					include("functions/edit-domain.php");
+					break;
+				case "edit-password-func":
+					include("functions/edit-password.php");
 					break;
 				case "uberspace":
 					echo $m->render('uberspace', $data);

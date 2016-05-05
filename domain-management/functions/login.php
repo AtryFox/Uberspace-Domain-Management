@@ -3,8 +3,6 @@ include("../config.php");
 include("../functions/mysql.php");
 include("../functions/main.php");
 
-error_reporting(E_ALL);
-
 $username = $_POST["username"];
 
 $s = $pdo->prepare("SELECT salt FROM $t_users WHERE username = :username LIMIT 1");
