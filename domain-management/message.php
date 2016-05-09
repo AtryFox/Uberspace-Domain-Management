@@ -43,6 +43,27 @@ if (isset($msg)) {
         case "E12":
             echo '<div class="alert alert-success">' . $xButton . '<i class="fa fa-lock fa-fw" aria-hidden="true"></i> <b>Passwort geändert!</b> Bitte logge dich erneut ein.</div>';
             break;
+        case "E13":
+            echo '<div class="alert alert-danger">' . $xButton . '<i class="fa fa-exclamation-triangle  fa-fw" aria-hidden="true"></i> <b>Fehler!</b> Nutzername nicht gefunden oder Uberspace Name ungültig.</div>';
+            break;
+        case "E14":
+            echo '<div class="alert alert-danger">' . $xButton . '<i class="fa fa-exclamation-triangle  fa-fw" aria-hidden="true"></i> <b>Fehler!</b> Homeverzeichnis nicht gefunden.</div>';
+            break;
+        case "E15":
+            echo '<div class="alert alert-danger">' . $xButton . '<i class="fa fa-exclamation-triangle  fa-fw" aria-hidden="true"></i> <b>Fehler!</b> Datei zum zurücksetzten des Passworts existiert bereits. Bitte lösche die Datei <i>'. $filepath . '</i>.</div>';
+            break;
+        case "E16":
+            echo '
+		<div class="panel panel-success">
+			<div class="panel-heading">Fast geschafft!</div>
+			<div class="panel-body">
+			Logge dich nun via SSH auf deinem Uberspace ein und gib folgenden Befehl zum Zurücksetzten deines Passworts ein:
+			<br><br>
+			<pre>php '. $filepath . '</pre>
+			Es wird dort ein neues Passwort generiert, mit dem du dich einloggen kannst. Du solltest dennoch anschließend aus Sicherheitsgründen dein Passwort ändern.
+			</div>
+		</div>';
+            break;
 
         case "I00":
             echo '

@@ -25,6 +25,8 @@
                     echo '<li><a href="?p=logout"><i class="fa fa-sign-out fa-fw"></i> Abmelden</a></li>';
                     echo '</ul>';
                     echo '</li>';
+                } else {
+                    echo '<li><a href="?p=reset-password">Passwort zurücksetzten</a></li>';
                 }
                 ?>
             </ul>
@@ -44,7 +46,18 @@
     } else {
 
         if (!getLoggedin()) {
-            echo $m->render('login');
+            switch ($site) {
+                case "reset-password":
+                    echo $m->render('reset-password', $data);
+                    break;
+                case "reset-password-func":
+                    include("functions/reset-password.php");
+                    break;
+                default:
+                    echo $m->render('login');
+                    break;
+                    
+            }
         } else {
 
             if ($updateStatus != -1) {
