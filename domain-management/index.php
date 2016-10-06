@@ -1,6 +1,6 @@
 <?php
 // INIT EVERYTHING //
-$version = "1.5.1";
+$version = "1.5.2";
 
 if (!file_exists("config.php")) {
     header("Location: install.php");
