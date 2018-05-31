@@ -11,7 +11,7 @@ Mit dem *Uberspace Domain Management*, kurz **UDM**, lassen sich auf einen [Uber
 1. Das UDM, also alle Dateien und Ordner auf dem Uberspace hochladen (beispielsweise in das Verzeichnis `/var/www/virtual/USERNAME/html/`).
 2. Nun muss die `install.php` aufgerufen werden. Diese liegt im Hauptverzeichnis des Tools. Dort müssen nun einige Informationen, wie Uberspace Nutzername oder MySQL Logindaten eingegeben werden. Nach der Installation kann das UDM genutzt werden.
 
-##Features##
+## Features ##
 - [x] Aufgeschaltete Domains bestimmten Ordnern via symbolischen Links zuweisen
 - [ ] Komplette Domainverwaltung (Webserver/Mailserver Konfiguration) (WIP)
 - [ ] Zertifikate hinzufügen und verwalten (WIP)
