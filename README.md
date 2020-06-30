@@ -2,6 +2,8 @@ Uberspace Domain Management
 ===========================
 Mit dem *Uberspace Domain Management*, kurz **UDM**, lassen sich auf einen [Uberspace](https://uberspace.de) aufgeschaltete Domains einfach verwalten. Es lassen sich beispielsweise Domains einem Ordner zuweisen oder Subdomains erstellen.
 
+Da Uberspace Ende 2020 den Support für Uberspace 6 einstellt, wird dieses Projekt ebenso ab nun eingefroren. 
+UDM funktioniert eingeschränkt auch noch in Uberspace 7, jedoch Funktionen wie die Übersicht aufgeschalter Domains und Zertifkate sind durch das erneute Uberspace-CLI deprecated und werden nicht mehr unterstützt.
 
 ## Vorraussetzungen ##
 * Uberspace
